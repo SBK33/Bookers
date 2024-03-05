@@ -1,8 +1,11 @@
 class BooksController < ApplicationController
   def index
+    @book = Book.new
   end
   def create
-    @book = Book.new
+    book = Book.new(book_params)
+    book.save
+    redirect_to book_path(book.id)
   end
 
   def show
@@ -10,4 +13,9 @@ class BooksController < ApplicationController
 
   def edit
   end
+end
+
+private
+
+def book_params
 end
